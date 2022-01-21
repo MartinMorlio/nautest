@@ -1,31 +1,13 @@
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import LandingPage from './components/LandindPage/LandingPage.jsx';
-import Home from './components/Home/Home';
-// import Activities from './components/Activity/activities';
-// import CountryId from './components/Countries/CountryId';
-// import NotFound from './components/NotFound/NotFound';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getMovies } from './actions/actions';
+import React from "react";
+import { Provider } from "react-redux";
 
-function App() {
-  const dispatch = useDispatch();
+import { store } from "./store/store";
+import { AppRouter } from "./routers/AppRouter";
 
-  useEffect(() => {
-    dispatch() //despachar todas las películas
-    }, [dispatch])
-
+export const App = () => {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route exact path='/' component={LandingPage} />
-          <Route exact path='/home' component={Home} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
   );
-}
-
-export default App;
+};
