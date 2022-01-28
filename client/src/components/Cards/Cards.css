@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(37, 32, 32);
+}
+
+.media {
+    display: inline-block;
+    /* flex-direction: column; */
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    /* background-color: #282c34; */
+    border-radius: 10px;
+    position: relative;
+    font-family: cursive;
+}
+.media:hover {
+    padding: 5px;
+    margin: 5px;
+    color: blue;
+}
+.date {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 3px;
+    padding: 0 2px;
+    padding-bottom: 3px;
+    color: white;
+}
+.poster {
+    border-radius: 10px;
+    height: 250px;
+    width: 200px;
+}
+.title {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    padding: 8px 0;
+    color: white;
+  }
