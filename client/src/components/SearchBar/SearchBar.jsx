@@ -13,7 +13,6 @@ export const SearchBar = () => {
     const [input, setInput] = useState("");
     const [filteredData, setFilteredData] = useState([])
 
-
     const handleFilter = (e) => {
         setInput(e.target.value)
         const filterMovies = peli.results.filter((t) => {
