@@ -3,7 +3,7 @@ import { api_key } from '../../actions/actions';
 import { useDispatch } from 'react-redux';
 import { Cards } from '../Cards/Cards';
 import axios from 'axios';
-import { SearchBar } from "../SearchBar/SearchBar";
+import { NavBar } from "../NavBar/NavBar";
 
 export const GET_MOVIES = "GET_MOVIES";
 export const Home = () => {
@@ -36,11 +36,9 @@ export const Home = () => {
 
     return (
         <div>
-            <span className="pageTitle"> Películas </span>
+            {/* <span className="pageTitle"> </span> */}
             <div className="trending">
-
-                <SearchBar />
-
+                <NavBar />
                 {
                     movie ? movie.map((e) => {
                         return (
@@ -48,9 +46,8 @@ export const Home = () => {
                                 key={e.id}
                                 id={e.id}
                                 poster={e.backdrop_path}
-                                title={e.original_title || e.title}
-                                critica={e.vote_average}
-                                date={e.release_date}
+                                title={e.original_title || e.title || e.name }
+                                date={e.release_date || e.first_air_date }
                             />
 
                         )
