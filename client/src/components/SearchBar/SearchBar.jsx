@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getMovies } from '../../actions/actions';
+import Link from 'react-router-dom';
 import './SearchBar.css';
+
 
 export const SearchBar = () => {
 
+    const dispatch = useDispatch();
     const peli = useSelector(state => state.movies.movies);
     console.log("holaaaaa", peli);
     const [input, setInput] = useState("");
@@ -23,10 +27,16 @@ export const SearchBar = () => {
             setFilteredData(filterMovies);
         };
     };
+    function handleSubmit(e) {
+        e.preventDefault()
+        dispatch(getMovies({ name: input }))
+        setInput("")
+        setFilteredData([])
+    }
 
     return (
         <div>
-            <form className="search">
+            <form onSubmit={e => handleSubmit(e)} className="search">
 
                 <input value={input} className="input"
                     placeholder="Buscar por nombre..."
@@ -37,8 +47,11 @@ export const SearchBar = () => {
                             {
                                 filteredData.map(e => {
                                     return (
-                                        <div key={e.id}>{e.title}</div>
-
+                                        <Link to={`/detail/${e._id}`}>
+                                        <a key={e.id} className="dataItem">
+                                        <p>{e.title || e.name}</p>
+                                        </a>
+                                        </Link>
                                     )
                                 })
                             }
